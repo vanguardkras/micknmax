@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -19,7 +20,9 @@ class GitHubWebHookMiddleware
     {
         $secret = $request->header('X-Hub-Signature-256');
 
-        if ($secret !== config('app.key')) {
+        $hash = hash_hmac('sha256', $request->getContent(), config('app.key'));
+
+        if ($secret !== 'sha256=' . $hash) {
             abort(Response::HTTP_FORBIDDEN);
         }
 
