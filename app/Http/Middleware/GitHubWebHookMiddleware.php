@@ -23,7 +23,7 @@ class GitHubWebHookMiddleware
         $hash = hash_hmac('sha1', $request->getContent(), config('app.key'));
 
         if ($secret !== 'sha1=' . $hash) {
-            abort(Response::HTTP_FORBIDDEN);
+            //abort(Response::HTTP_FORBIDDEN, '');
         }
 
         return $next($request);
