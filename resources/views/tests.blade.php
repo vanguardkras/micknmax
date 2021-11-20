@@ -9,7 +9,7 @@
     <div class="container w-75" style="max-width: 870px; min-width: 320px;">
 
         <!--Input and button to create a test-->
-        <form class="my-5" method="post" action="/tests">
+        <form class="my-5" method="post" action="/app_tests">
             @csrf
             <input type="text" name="name" class="form-control mb-2" placeholder="Test name">
             <button type="submit" class="btn btn-primary btn-sm" value="input">Create</button>
@@ -30,7 +30,7 @@
                     <tr>
                         <th class="align-middle text-center">{{ $loop->iteration }}</th>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="/tests/{{ $test->id }}">{{ $test->name }}</a>
+                            <a class="btn btn-primary btn-sm" href="/app_tests/{{ $test->id }}">{{ $test->name }}</a>
                             <a class="btn btn-info btn-sm"
                                href="{{ route('publicTest', ['test' => $test->id]) }}"
                                target="_blank"
@@ -39,7 +39,7 @@
                             </a>
                         </td>
                         <td>
-                            <form method="post" action="/tests/{{ $test->id }}">
+                            <form method="post" action="/app_tests/{{ $test->id }}">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger" role="button">

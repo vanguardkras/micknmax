@@ -42,7 +42,7 @@
                                 @method('PUT')
                                 <td class="text-center">
                                     <input class="form-control col-sm-12" placeholder="Question content"
-                                           name="questions"
+                                           name="question"
                                            value="{{ $question->question }}"
                                     >
                                 </td>

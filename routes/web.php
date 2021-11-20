@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware([])->group(function () {
-    Route::resource('tests', TestController::class)->only([
+    Route::resource('app_tests', TestController::class)
+        ->parameter('app_tests', 'test')
+        ->only([
         'index', 'store', 'destroy', 'show',
     ]);
     Route::get('results', [TestController::class, 'resultsIndex']);
