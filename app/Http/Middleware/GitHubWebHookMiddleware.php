@@ -18,11 +18,11 @@ class GitHubWebHookMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $secret = $request->header('X-Hub-Signature-256');
+        $secret = $request->header('X-Hub-Signature');
 
-        $hash = hash_hmac('sha256', $request->getContent(), config('app.key'));
+        $hash = hash_hmac('sha1', $request->getContent(), config('app.key'));
 
-        if ($secret !== 'sha256=' . $hash) {
+        if ($secret !== 'sha1=' . $hash) {
             abort(Response::HTTP_FORBIDDEN);
         }
 
