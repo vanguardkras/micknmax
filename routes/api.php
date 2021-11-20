@@ -18,7 +18,3 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::middleware('github_webhook')->group(function () {
-    Route::post('github/deploy', [GitHubWebHookController::class, 'deploy']);
-});
